@@ -6,7 +6,7 @@ defmodule Socialohoenix.Accounts do
   import Ecto.Query, warn: false
   alias Socialohoenix.Repo
 
-  alias Socialohoenix.Accounts.Users
+  alias Socialohoenix.Accounts.User
 
   @doc """
   Returns the list of user.
@@ -14,91 +14,91 @@ defmodule Socialohoenix.Accounts do
   ## Examples
 
       iex> list_user()
-      [%Users{}, ...]
+      [%User{}, ...]
 
   """
   def list_user do
-    Repo.all(Users)
+    Repo.all(User)
   end
 
   @doc """
-  Gets a single users.
+  Gets a single user.
 
-  Raises `Ecto.NoResultsError` if the Users does not exist.
+  Raises `Ecto.NoResultsError` if the User does not exist.
 
   ## Examples
 
       iex> get_users!(123)
-      %Users{}
+      %User{}
 
       iex> get_users!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_users!(id), do: Repo.get!(Users, id)
+  def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
-  Creates a users.
+  Creates a user.
 
   ## Examples
 
       iex> create_users(%{field: value})
-      {:ok, %Users{}}
+      {:ok, %User{}}
 
       iex> create_users(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_users(attrs \\ %{}) do
-    %Users{}
-    |> Users.changeset(attrs)
+  def create_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
     |> Repo.insert()
   end
 
   @doc """
-  Updates a users.
+  Updates a user.
 
   ## Examples
 
-      iex> update_users(users, %{field: new_value})
-      {:ok, %Users{}}
+      iex> update_users(user, %{field: new_value})
+      {:ok, %User{}}
 
-      iex> update_users(users, %{field: bad_value})
+      iex> update_users(user, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_users(%Users{} = users, attrs) do
-    users
-    |> Users.changeset(attrs)
+  def update_users(%User{} = user, attrs) do
+    user
+    |> User.changeset(attrs)
     |> Repo.update()
   end
 
   @doc """
-  Deletes a Users.
+  Deletes a User.
 
   ## Examples
 
-      iex> delete_users(users)
-      {:ok, %Users{}}
+      iex> delete_users(user)
+      {:ok, %User{}}
 
-      iex> delete_users(users)
+      iex> delete_users(user)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_users(%Users{} = users) do
-    Repo.delete(users)
+  def delete_user(%User{} = user) do
+    Repo.delete(user)
   end
 
   @doc """
-  Returns an `%Ecto.Changeset{}` for tracking users changes.
+  Returns an `%Ecto.Changeset{}` for tracking user changes.
 
   ## Examples
 
-      iex> change_users(users)
-      %Ecto.Changeset{source: %Users{}}
+      iex> change_users(user)
+      %Ecto.Changeset{source: %User{}}
 
   """
-  def change_users(%Users{} = users) do
-    Users.changeset(users, %{})
+  def change_users(%User{} = user) do
+    User.changeset(user, %{})
   end
 end
