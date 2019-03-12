@@ -7,7 +7,23 @@ defmodule Socialohoenix.Accounts do
   alias Socialohoenix.Accounts.User
   alias Socialohoenix.Repo
 
-  
+  def get_user_by_email(email) do
+    from(user in User, where: user.email == ^email)
+    |> Repo.one()
+  end
+
+  def authenticate_by_email_and_pass(email, given_pass) do
+    user = get_user_by_email(email)
+    cond do
+      user && Comeonin.Pbkdf2.checkpw(given_pass, user.password) -> 
+        {:ok, user}
+      user ->
+        {:error, :unauthorized}
+      true -> 
+        Comeonin.Pbkdf2.dummy_checkpw()
+        {:error, :not_found}
+    end
+  end
 
   @doc """
   Returns the list of user.

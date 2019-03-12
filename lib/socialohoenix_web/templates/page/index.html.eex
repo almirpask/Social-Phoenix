@@ -30,6 +30,9 @@
       <li>
         <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
       </li>
+      <li>
+        <%= link "Users", to: Routes.user_path(@conn, :index), class: "btn btn-success pull-right" %>
+      </li>
     </ul>
   </article>
 </section>
