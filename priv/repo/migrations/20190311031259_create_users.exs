@@ -1,4 +1,4 @@
-defmodule Socialohoenix.Repo.Migrations.CreateUsers do
+defmodule SocialPhoenix.Repo.Migrations.CreateUsers do
   use Ecto.Migration
 
   def change do

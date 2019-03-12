@@ -1,4 +1,4 @@
-defmodule SocialohoenixWeb.ChannelCase do
+defmodule SocialPhoenixWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -21,15 +21,15 @@ defmodule SocialohoenixWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint SocialohoenixWeb.Endpoint
+      @endpoint SocialPhoenixWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Socialohoenix.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SocialPhoenix.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Socialohoenix.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(SocialPhoenix.Repo, {:shared, self()})
     end
 
     :ok

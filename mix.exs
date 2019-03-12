@@ -1,9 +1,9 @@
-defmodule Socialohoenix.MixProject do
+defmodule SocialPhoenix.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :socialohoenix,
+      app: :social_phoenix,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Socialohoenix.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Socialohoenix.Application, []},
+      mod: {SocialPhoenix.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

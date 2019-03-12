@@ -1,4 +1,4 @@
-defmodule Socialohoenix.DataCase do
+defmodule SocialPhoenix.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,20 +16,20 @@ defmodule Socialohoenix.DataCase do
 
   using do
     quote do
-      alias Socialohoenix.Repo
+      alias SocialPhoenix.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Socialohoenix.DataCase
+      import SocialPhoenix.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Socialohoenix.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SocialPhoenix.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Socialohoenix.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(SocialPhoenix.Repo, {:shared, self()})
     end
 
     :ok

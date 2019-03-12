@@ -1,4 +1,4 @@
-# Socialohoenix
+# SocialPhoenix
 
 To start your Phoenix server:
 

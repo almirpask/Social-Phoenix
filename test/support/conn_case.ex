@@ -1,4 +1,4 @@
-defmodule SocialohoenixWeb.ConnCase do
+defmodule SocialPhoenixWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -19,18 +19,18 @@ defmodule SocialohoenixWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias SocialohoenixWeb.Router.Helpers, as: Routes
+      alias SocialPhoenixWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint SocialohoenixWeb.Endpoint
+      @endpoint SocialPhoenixWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Socialohoenix.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(SocialPhoenix.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Socialohoenix.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(SocialPhoenix.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

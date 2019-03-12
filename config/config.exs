@@ -7,15 +7,15 @@
 # General application configuration
 use Mix.Config
 
-config :socialohoenix,
-  ecto_repos: [Socialohoenix.Repo]
+config :social_phoenix,
+  ecto_repos: [SocialPhoenix.Repo]
 
 # Configures the endpoint
-config :socialohoenix, SocialohoenixWeb.Endpoint,
+config :social_phoenix, SocialPhoenixWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "5reQX6nfva7LBviAjSkXU6nEQIPDIXeOwWmMzBO6q0PHv/4p4+EF0PXkf02YdF1l",
-  render_errors: [view: SocialohoenixWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Socialohoenix.PubSub, adapter: Phoenix.PubSub.PG2]
+  render_errors: [view: SocialPhoenixWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: SocialPhoenix.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,

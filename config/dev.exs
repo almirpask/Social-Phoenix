@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :socialohoenix, SocialohoenixWeb.Endpoint,
+config :social_phoenix, SocialPhoenixWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -46,13 +46,13 @@ config :socialohoenix, SocialohoenixWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :socialohoenix, SocialohoenixWeb.Endpoint,
+config :social_phoenix, SocialPhoenixWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/socialohoenix_web/views/.*(ex)$},
-      ~r{lib/socialohoenix_web/templates/.*(eex)$}
+      ~r{lib/social_phoenix_web/views/.*(ex)$},
+      ~r{lib/social_phoenix_web/templates/.*(eex)$}
     ]
   ]
 
@@ -67,9 +67,9 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
-config :socialohoenix, Socialohoenix.Repo,
+config :social_phoenix, SocialPhoenix.Repo,
   username: "postgres",
   password: "postgres",
-  database: "socialohoenix_dev",
+  database: "social_phoenix_dev",
   hostname: "localhost",
   pool_size: 10
