@@ -4,9 +4,10 @@ defmodule Socialohoenix.Accounts do
   """
 
   import Ecto.Query, warn: false
+  alias Socialohoenix.Accounts.User
   alias Socialohoenix.Repo
 
-  alias Socialohoenix.Accounts.User
+  
 
   @doc """
   Returns the list of user.
@@ -72,6 +73,18 @@ defmodule Socialohoenix.Accounts do
     |> User.changeset(attrs)
     |> Repo.update()
   end
+
+
+  def change_registration(%User{} = user, params) do
+    User.changeset(user, params)
+  end
+
+  def register_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert()
+  end
+
 
   @doc """
   Deletes a User.

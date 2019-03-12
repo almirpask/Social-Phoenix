@@ -1,0 +1,14 @@
+<h1>Listing Users</h1>
+<div class="row"> 
+    <%= link "New", to: Routes.user_path(@conn, :new), class: "btn btn-success pull-right" %>
+</div>
+<div class="row"> 
+    <table class="table">
+        <%= for user <- @users do %>
+            <tr>
+                <td> <%= user.name %> </td>
+                <td> <% user.email %> </td>
+            </tr>
+        <% end %> 
+    </table>
+</div>
