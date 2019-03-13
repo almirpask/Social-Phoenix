@@ -6,6 +6,7 @@ defmodule SocialPhoenix.Repo.Migrations.CreateUsers do
       add :name, :string
       add :email, :string
       add :password, :string
+      add :description, :string
 
       timestamps()
     end
