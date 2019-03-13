@@ -19,6 +19,7 @@ defmodule SocialPhoenixWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController 
+    post "/users/:id/follow", UserController, :follow, as: :follow
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
 

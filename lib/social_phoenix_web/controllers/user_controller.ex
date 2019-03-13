@@ -1,7 +1,12 @@
 defmodule SocialPhoenixWeb.UserController do
     use SocialPhoenixWeb, :controller
+    import Ecto.Query, warn: false
+
     alias SocialPhoenix.Accounts
     alias SocialPhoenix.Accounts.User
+    alias SocialPhoenix.Accounts.Follower
+    alias SocialPhoenix.Repo
+
     plug :authenticate when action in [:index, :show]
 
     def index(conn, _params) do
@@ -24,6 +29,17 @@ defmodule SocialPhoenixWeb.UserController do
             {:error, %Ecto.Changeset{} = changeset} ->
                 render(conn, "new.html", changeset: changeset)
         end
+    end
+
+    def show(conn, %{"id" => id}) do
+        user = Accounts.get_user!(id)
+        render(conn, "show.html", user: user)
+    end
+
+    def follow(conn, %{"id" => id}) do
+        Accounts.follow(id)
+        conn
+        |> redirect(to: Routes.user_path(conn, :show, id))
     end
 
     defp authenticate(conn, _opts) do

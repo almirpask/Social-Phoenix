@@ -5,11 +5,26 @@ defmodule SocialPhoenix.Accounts do
 
   import Ecto.Query, warn: false
   alias SocialPhoenix.Accounts.User
+  alias SocialPhoenix.Accounts.Follower
   alias SocialPhoenix.Repo
+
+
+  def follow(id) do
+    follower = from(follower in Follower, where: follower.user_id == ^id) |> Repo.one()
+    cond do 
+      follower == nil ->
+        IO.puts("unfollowing")
+        create_follower(%{user_id: id})
+      true -> 
+        IO.puts("Following")
+    end
+    
+  end
 
   def get_user_by_email(email) do
     from(user in User, where: user.email == ^email)
     |> Repo.one()
+
   end
 
   def authenticate_by_email_and_pass(email, given_pass) do

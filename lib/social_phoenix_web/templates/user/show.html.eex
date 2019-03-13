@@ -1,0 +1,6 @@
+<h1>Showing User</h1>
+
+<%= render("user.html", user: @user)%>
+followers: 0
+<a href="">follow</a>
+<%= link "Follow", to: Routes.follow_path(@conn, :follow, @user.id), method: "post" , class: "btn btn-success pull-right" %>

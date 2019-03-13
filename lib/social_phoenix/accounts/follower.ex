@@ -12,7 +12,7 @@ defmodule SocialPhoenix.Accounts.Follower do
   @doc false
   def changeset(follower, attrs) do
     follower
-    |> cast(attrs, [])
-    |> validate_required([])
+    |> cast(attrs, [:user_id])
+    |> validate_required([:user_id])
   end
 end
