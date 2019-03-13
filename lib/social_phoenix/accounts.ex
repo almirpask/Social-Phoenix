@@ -130,4 +130,100 @@ defmodule SocialPhoenix.Accounts do
   def change_users(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  alias SocialPhoenix.Accounts.Follower
+
+  @doc """
+  Returns the list of followers.
+
+  ## Examples
+
+      iex> list_followers()
+      [%Follower{}, ...]
+
+  """
+  def list_followers do
+    Repo.all(Follower)
+  end
+
+  @doc """
+  Gets a single follower.
+
+  Raises `Ecto.NoResultsError` if the Follower does not exist.
+
+  ## Examples
+
+      iex> get_follower!(123)
+      %Follower{}
+
+      iex> get_follower!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_follower!(id), do: Repo.get!(Follower, id)
+
+  @doc """
+  Creates a follower.
+
+  ## Examples
+
+      iex> create_follower(%{field: value})
+      {:ok, %Follower{}}
+
+      iex> create_follower(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_follower(attrs \\ %{}) do
+    %Follower{}
+    |> Follower.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a follower.
+
+  ## Examples
+
+      iex> update_follower(follower, %{field: new_value})
+      {:ok, %Follower{}}
+
+      iex> update_follower(follower, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_follower(%Follower{} = follower, attrs) do
+    follower
+    |> Follower.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a Follower.
+
+  ## Examples
+
+      iex> delete_follower(follower)
+      {:ok, %Follower{}}
+
+      iex> delete_follower(follower)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_follower(%Follower{} = follower) do
+    Repo.delete(follower)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking follower changes.
+
+  ## Examples
+
+      iex> change_follower(follower)
+      %Ecto.Changeset{source: %Follower{}}
+
+  """
+  def change_follower(%Follower{} = follower) do
+    Follower.changeset(follower, %{})
+  end
 end
