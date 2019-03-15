@@ -1,7 +1,7 @@
 defmodule SocialPhoenix.Accounts do
   @moduledoc """
   The Accounts context.
-  """
+  """ 
 
   import Ecto.Query, warn: false
   alias SocialPhoenix.Accounts.User
@@ -9,12 +9,13 @@ defmodule SocialPhoenix.Accounts do
   alias SocialPhoenix.Repo
 
 
-  def follow(id) do
-    follower = from(follower in Follower, where: follower.user_id == ^id) |> Repo.one()
+  def follow(conn, id) do
+    current_user = conn.assigns.current_user
+    follower = from(follower in Follower, where: follower.user_id == ^id and follower.follower_id == ^current_user.id) |> Repo.one()
     cond do 
       follower == nil ->
         IO.puts("unfollowing")
-        create_follower(%{user_id: id})
+        create_follower(%{user_id: id, follower_id: current_user.id})
       true -> 
         IO.puts("Following")
     end

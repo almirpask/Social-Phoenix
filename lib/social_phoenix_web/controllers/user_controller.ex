@@ -37,7 +37,7 @@ defmodule SocialPhoenixWeb.UserController do
     end
 
     def follow(conn, %{"id" => id}) do
-        Accounts.follow(id)
+        Accounts.follow(conn, id)
         conn
         |> redirect(to: Routes.user_path(conn, :show, id))
     end
