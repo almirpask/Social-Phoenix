@@ -4,8 +4,9 @@ defmodule SocialPhoenix.Accounts.Follower do
 
 
   schema "followers" do
-    field :user_id, :id
+    # field :user_id, :id
     field :follower_id, :id
+    belongs_to :user, SocialPhoenix.Accounts.User
     timestamps()
   end
 

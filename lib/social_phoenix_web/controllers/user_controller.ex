@@ -42,6 +42,12 @@ defmodule SocialPhoenixWeb.UserController do
         |> redirect(to: Routes.user_path(conn, :show, id))
     end
 
+    def unfollow(conn, %{"id" => id}) do
+        Accounts.unfollow(conn, id)
+        conn
+        |> redirect(to: Routes.user_path(conn, :show, id))
+    end
+
     defp authenticate(conn, _opts) do
         if conn.assigns.current_user do
           conn

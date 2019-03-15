@@ -8,8 +8,7 @@ defmodule SocialPhoenix.Accounts.User do
     field :name, :string
     field :password, :string
     field :description, :string
-
-
+    has_many :followers, SocialPhoenix.Accounts.Follower
     timestamps()
   end
   

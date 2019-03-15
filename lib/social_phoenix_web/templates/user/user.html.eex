@@ -1,1 +1,1 @@
-<strong><%= @user.name %> </strong> (<%= @user.id %>)
+<strong><%= @user.name %> </strong> (<%= @user.id %>) followers(<%= count_followers(@user) %>)

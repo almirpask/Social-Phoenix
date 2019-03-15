@@ -8,24 +8,21 @@ defmodule SocialPhoenix.Accounts do
   alias SocialPhoenix.Accounts.Follower
   alias SocialPhoenix.Repo
 
-
+  
   def follow(conn, id) do
+    create_follower(%{user_id: id, follower_id: conn.assigns.current_user.id})  
+  end
+
+  def unfollow(conn, id) do
     current_user = conn.assigns.current_user
-    follower = from(follower in Follower, where: follower.user_id == ^id and follower.follower_id == ^current_user.id) |> Repo.one()
-    cond do 
-      follower == nil ->
-        IO.puts("unfollowing")
-        create_follower(%{user_id: id, follower_id: current_user.id})
-      true -> 
-        IO.puts("Following")
-    end
-    
+    follower = from(follower in Follower, where: follower.user_id == ^id and follower.follower_id == ^current_user.id)
+      |> Repo.one()
+    delete_follower(follower)
   end
 
   def get_user_by_email(email) do
     from(user in User, where: user.email == ^email)
     |> Repo.one()
-
   end
 
   def authenticate_by_email_and_pass(email, given_pass) do
@@ -69,6 +66,10 @@ defmodule SocialPhoenix.Accounts do
 
   """
   def get_user!(id), do: Repo.get!(User, id)
+
+  def get_user_with_followers!(id) do
+    Repo.get!(User, id, preload: [:followers])
+  end
 
   @doc """
   Creates a user.
