@@ -3,7 +3,7 @@ defmodule SocialPhoenix.Repo.Migrations.CreatePosts do
 
   def change do
     create table(:posts) do
-      add :body, :text
+      add :body, :string
       add :user_id, references(:users, on_delete: :nothing)
 
       timestamps()

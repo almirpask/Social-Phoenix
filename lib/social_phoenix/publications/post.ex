@@ -13,7 +13,7 @@ defmodule SocialPhoenix.Publications.Post do
   @doc false
   def changeset(post, attrs) do
     post
-    |> cast(attrs, [:body])
-    |> validate_required([:body])
+    |> cast(attrs, [:body, :user_id])
+    |> validate_required([:body, :user_id])
   end
 end

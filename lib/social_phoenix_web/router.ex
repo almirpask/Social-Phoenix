@@ -22,6 +22,7 @@ defmodule SocialPhoenixWeb.Router do
     post "/users/:id/follow", UserController, :follow, as: :follow
     delete "/users/:id/unfollow", UserController, :unfollow, as: :follow
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/posts", PostController
   end
 
   # Other scopes may use custom stacks.
