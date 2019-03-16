@@ -1,0 +1,68 @@
+<div class="navbar-fixed">
+  <nav class="top-nav">
+    <div class="nav-wrapper col s12">
+      <div class="container">
+        <div class="row">
+          <div class="col m3">
+            <%= if @current_user do %>
+            <a href="/posts" class="brand-logo">
+              <i class="material-icons">group</i>
+              <span class="logo-title">
+                Social Phoenix
+              </span>
+            </a>
+            <% else %>
+            <a href="/" class="brand-logo">
+              <i class="material-icons">group</i>
+              <span class="logo-title">
+                Social Phoenix
+              </span>
+            </a>
+            <% end %>
+            <a href="#" data-target="side-bar" class="button-collapse sidenav-trigger"><i class="material-icons">menu</i></a>
+          </div>
+          <ul class="right hide-on-med-and-down">
+            <%= if @current_user do %>
+            <div class="row">
+              <div class="col">
+                <a id="dropdown-button" href="#!" data-target="dropdown1">
+                  <img src="<%= Routes.static_path(@conn, "/images/user.png") %>" alt="User Image" class="responsive-img circle nav-image" style="height: 45px; widht: 45px;"/>
+                </a>
+              </div>
+              <ul id="dropdown1" class="dropdown-content">
+                <li>
+                  <%= link "Profile", to: Routes.user_path(@conn, :show, @current_user) %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link "Log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete" %>
+                </li>
+              </ul>
+            </div>
+            <% else %>
+            <li>
+              <%= link "Log in", to: Routes.session_path(@conn, :new) %>
+            </li>
+            <li>
+              <%= link "Register", to: Routes.user_path(@conn, :new) %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<ul class="sidenav" id="side-bar">
+  <%= if @current_user do %>
+    <li><%= link "Feed", to: Routes.post_path(@conn, :index) %> </li>
+    <li><%= link "Profile", to: Routes.user_path(@conn, :show, @current_user) %> </li>
+    <li><div class="divider"></div></li>
+    <li> <%= link "Log out", to: Routes.session_path(@conn, :delete, @current_user), method: "delete" %> </li>
+  <% else %>
+    <li><%= link "Log in", to: Routes.session_path(@conn, :new) %> </li>
+    <li><div class="divider"></div></li>
+    <li><%= link "Register", to: Routes.user_path(@conn, :new) %> </li>
+  <% end %>
+</ul>
