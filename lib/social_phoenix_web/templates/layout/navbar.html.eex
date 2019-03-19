@@ -8,7 +8,7 @@
             <a href="/posts" class="brand-logo">
               <i class="material-icons">group</i>
               <span class="logo-title">
-                Social Phoenix
+                SocialPhoenix
               </span>
             </a>
             <% else %>

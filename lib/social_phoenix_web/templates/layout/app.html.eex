@@ -16,12 +16,6 @@
     
   </header>
   <main role="main" class="container">
-    <p class="alert alert-info" role="alert">
-      <%= get_flash(@conn, :info) %>
-    </p>
-    <p class="alert alert-danger" role="alert">
-      <%= get_flash(@conn, :error) %>
-    </p>
     <%= render @view_module, @view_template, assigns %>
   </main>
 
@@ -29,6 +23,11 @@
     <%= render "footer.html", Map.put(assigns, :action, Routes.page_path(@conn, :index)) %>
   </footer>
   <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js")%>""> </script>
+  <script>
+    <%= Enum.map(get_flash(@conn), fn {flash_key, flash_message} -> %>
+      M.toast({html: "<%= flash_message %>"})
+    <% end) %>
+  </script>
 </body>
 
 </html>

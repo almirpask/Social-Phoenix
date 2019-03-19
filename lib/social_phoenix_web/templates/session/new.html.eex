@@ -1,8 +1,21 @@
-<h1>Login</h1>
-<%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
-    <div>
-        <%= text_input f, :email, placeholder: "Email" %> </div>
-    <div>
-    <%= password_input f, :password, placeholder: "Password" %> </div>
-    <%= submit "Log in" %> 
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col m8 offset-m2">
+      <h2>Log in</h2>
+      <%= form_for @conn, Routes.session_path(@conn, :create), [as: :session], fn f -> %>
+        <div class="field">
+          <%= text_input f, :email, placeholder: "Email", autofocus: true %>
+        </div>
+        <div class="field">
+          <%= password_input f, :password, placeholder: "Password" %>
+        </div>
+
+        <div class="actions">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,20 @@
 <h1>Show Post</h1>
 
 <ul>
-
   <li>
-    <strong>Body:</strong>
+    <strong>Body:</strong> 
     <%= @post.body %>
-  </li>
 
+    <a href="">Like</a>
+  </li>
+  <li>
+    <div class="form">
+      <form action="">
+        <input type="text">
+      </form>
+    </div>
+    
+  </li>
 </ul>
 
 <span><%= link "Edit", to: Routes.post_path(@conn, :edit, @post) %></span>
